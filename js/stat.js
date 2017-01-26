@@ -1,21 +1,21 @@
 'use strict';
 
 window.renderStatistics = function (ctx, names, times) {
-   var statisHeight = 150; // высота столбцов статистики
-   var columnStatisX = 140; // положение столбцов статистики по горизонтали
-   var columnIndent = 90; // отступ между колонками статистики
-   var timePassingLevel = times[0]; // обращение к массиву times через переменную
+  var statisHeight = 150; // высота столбцов статистики
+  var columnStatisX = 140; // положение столбцов статистики по горизонтали
+  var columnIndent = 90; // отступ между колонками статистики
+  var timePassingLevel = times[0]; // обращение к массиву times через переменную
 
-   var drawRect = function(x1, y1, x2, y2, color) {
-      ctx.fillStyle = color;
-      ctx.fillRect(x1, y1, x2, y2);
+  var drawRect = function(x1, y1, x2, y2, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(x1, y1, x2, y2);
   };
 
-    var drawText = function(text, x, y, color) {
-       ctx.font = '16px PT Mono';
-       ctx.fillStyle = color || '#000';
-       ctx.fillText(text, x, y);
-    };
+  var drawText = function(text, x, y, color) {
+    ctx.font = '16px PT Mono';
+    ctx.fillStyle = color || '#000';
+    ctx.fillText(text, x, y);
+  };
 
   // фон статистики
   drawRect(110, 20, 420, 270, 'rgba(0, 0, 0, 0.7)');
