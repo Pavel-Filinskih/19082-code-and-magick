@@ -26,25 +26,24 @@ window.renderStatistics = function (ctx, names, times) {
 
   // получение максимального значения массива - times
   for (var i = 0; i < times.length; i++) {
-    var timeGame = times[i];
-    if (timeGame > timePassingLevel) {
-      timePassingLevel = timeGame;
+    if (times[i] > timePassingLevel) {
+      timePassingLevel = times[i];
     }
-  };
+  }
 
   var valuesSum = statisHeight / timePassingLevel; // вычисление высоты столбцов статистики
 
   // получение максимального значения массива - names
-  for (var i = 0; i < times.length; i++) {
+  for (i = 0; i < times.length; i++) {
     var playerName = names[i];
     var timeGame = times[i];
     var HeightColumnStatis = valuesSum * timeGame;
 
     // Вывод значений из массивов (names, times) в окно статистики
-  var fillColor = playerName === 'Вы' ? '#FF0000' : 'rgb(0, 0, ' + Math.round(80 + Math.random() * (255 - 80)) + ')';
+    var fillColor = playerName === 'Вы' ? '#FF0000' : 'rgb(0, 0, ' + Math.round(80 + Math.random() * (255 - 80)) + ')';
 
     drawRect(columnStatisX + columnIndent * i, 245 - HeightColumnStatis, 40, HeightColumnStatis, fillColor);
     drawText(timeGame.toFixed(0), columnStatisX + columnIndent * i, 240 - HeightColumnStatis);
     drawText(playerName, columnStatisX + columnIndent * i, 260);
-  };
+  }
 };
