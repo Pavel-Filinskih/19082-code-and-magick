@@ -6,12 +6,12 @@ window.renderStatistics = function (ctx, names, times) {
   var columnIndent = 90; // отступ между колонками статистики
   var timePassingLevel = times[0]; // обращение к массиву times через переменную
 
-  var drawRect = function(x1, y1, x2, y2, color) {
+  var drawRect = function (x1, y1, x2, y2, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x1, y1, x2, y2);
   };
 
-  var drawText = function(text, x, y, color) {
+  var drawText = function (text, x, y, color) {
     ctx.font = '16px PT Mono';
     ctx.fillStyle = color || '#000';
     ctx.fillText(text, x, y);
