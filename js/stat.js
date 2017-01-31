@@ -1,6 +1,7 @@
 'use strict';
 
 window.renderStatistics = function (ctx, names, times) {
+
   var statisHeight = 150; // высота столбцов статистики
   var columnStatisX = 140; // положение столбцов статистики по горизонтали
   var columnIndent = 90; // отступ между колонками статистики
@@ -18,16 +19,18 @@ window.renderStatistics = function (ctx, names, times) {
   };
 
   // фон статистики
+
   drawRect(110, 20, 420, 270, 'rgba(0, 0, 0, 0.7)');
   drawRect(100, 10, 420, 270, 'rgba(256, 256, 256, 1.0)');
 
   drawText('Ура, вы победили!', 140, 40);
   drawText('Список результатов:', 140, 60);
 
-  // получение максимального значения массива - times
+  // получение максимального значения массива
   for (var i = 0; i < times.length; i++) {
-    if (times[i] > timePassingLevel) {
-      timePassingLevel = times[i];
+    var timeGame = times[i];
+    if (timeGame > timePassingLevel) {
+      timePassingLevel = timeGame;
     }
   }
 
@@ -35,9 +38,9 @@ window.renderStatistics = function (ctx, names, times) {
 
   // получение максимального значения массива - names
   for (i = 0; i < times.length; i++) {
+
     var playerName = names[i];
-    var timeGame = times[i];
-    var HeightColumnStatis = valuesSum * timeGame;
+    var HeightColumnStatis = valuesSum * times[i];
 
     // Вывод значений из массивов (names, times) в окно статистики
     var fillColor = playerName === 'Вы' ? '#FF0000' : 'rgb(0, 0, ' + Math.round(80 + Math.random() * (255 - 80)) + ')';
@@ -45,5 +48,6 @@ window.renderStatistics = function (ctx, names, times) {
     drawRect(columnStatisX + columnIndent * i, 245 - HeightColumnStatis, 40, HeightColumnStatis, fillColor);
     drawText(timeGame.toFixed(0), columnStatisX + columnIndent * i, 240 - HeightColumnStatis);
     drawText(playerName, columnStatisX + columnIndent * i, 260);
+
   }
 };
