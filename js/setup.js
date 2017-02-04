@@ -2,7 +2,7 @@
 
 // открываем popup окно кликнув по иконке игрока
 var popupWindow = document.querySelector('.setup-open');
-var openPopupShow = document.querySelector('.invisible');
+var openPopupShow = document.querySelector('.setup');
 
 popupWindow.addEventListener('click', function () {
   openPopupShow.classList.remove('invisible');
@@ -70,17 +70,15 @@ var colorKeyEyes = [
 
 colorEyesMag.addEventListener('click', function () {
 
-  function colorKeyRandom(arr, obj) {
-    for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 10; i++) {
 
-      var randKeyColor = arr[Math.floor(Math.random() * arr.length)];
-      if (obj.style.fill !== randKeyColor) {
-        obj.style.fill = randKeyColor;
-        break;
-      }
+    var randKeyColor = colorKeyEyes[Math.floor(Math.random() * colorKeyEyes.length)];
+
+    if (colorEyesMag.style.fill !== randKeyColor) {
+      colorEyesMag.style.fill = randKeyColor;
+      break;
     }
   }
-  colorKeyRandom(colorKeyEyes, colorEyesMag);
 });
 
 // смена цвета файерболла мага
@@ -97,16 +95,13 @@ var colorIndex = 1;
 
 colorFireballMage.addEventListener('click', function () {
 
-  function colorHexRandom(arr, obj) {
-    if (colorIndex < arr.length) {
-      if (colorIndex < arr.length) {
-        obj.style.backgroundColor = arr[colorIndex];
-      }
-    }
-    colorIndex++;
-    if (colorIndex === arr.length) {
-      colorIndex = 0;
+  if (colorIndex < colorHexFireball.length) {
+    if (colorIndex < colorHexFireball.length) {
+      colorFireballMage.style.backgroundColor = colorHexFireball[colorIndex];
     }
   }
-  colorHexRandom(colorHexFireball, colorFireballMage);
+  colorIndex++;
+  if (colorIndex === colorHexFireball.length) {
+    colorIndex = 0;
+  }
 });
