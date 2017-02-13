@@ -78,3 +78,60 @@ colorEyesMag.addEventListener('click', function () {
 colorFireballMage.addEventListener('click', function () {
   colorRgbRandom(colorHexFireball, colorFireballMage, 'backgroundColor');
 });
+
+//   Кнопки открытия/закрытия диалога настройки персонажа:
+
+// 1. Когда иконка пользователя в фокусе, то диалог настройки должен открываться по нажатию кнопки ENTER.
+// 2. Когда диалог открыт, то клавиша ESC должна закрывать диалог.
+// 3. Если диалог открыт и фокус находится на крестике, то нажатие клавиши ENTER приводит к закрытию диалога.
+// 4. Если диалог открыт, нажатие на кнопку «Сохранить» приводит к закрытию диалога.
+// 5. Если диалог открыт и фокус находится на кнопке «Сохранить», нажатие на ENTER приводит к закрытию диалога
+
+var ENTER_KEY_CODE = 13;
+var ESCAPE_KEY_CODE = 27;
+
+var popupSetupShow = function () {
+  openPopupShow.classList.remove('invisible');
+};
+
+var popupSetupClose = function () {
+  openPopupShow.classList.add('invisible');
+};
+
+var isActiveEvent = function (evt) {
+  return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
+};
+
+var saveButtonClose = function (evt) {
+  evt.preventDefault();
+  if (!openPopupShow.classList.contains('invisible')) {
+    if (isActiveEvent(evt)) {
+      openPopupShow.classList.add('invisible');
+    }
+  }
+  saveUserConfig.setAttribute('aria-pressed', 'true');
+};
+
+document.addEventListener('keydown', function (evt) {
+  if (!openPopupShow.classList.contains('invisible')) {
+    if (evt.keyCode === ESCAPE_KEY_CODE) {
+      openPopupShow.classList.add('invisible');
+    }
+  }
+});
+
+popupWindow.addEventListener('keydown', function (evt) {
+  if (isActiveEvent(evt)) {
+    openPopupShow.classList.remove('invisible');
+  }
+});
+
+closePopupWindow.addEventListener('keydown', function (evt) {
+  if (isActiveEvent(evt)) {
+    openPopupShow.classList.add('invisible');
+  }
+});
+
+popupWindow.addEventListener('click', popupSetupShow);
+closePopupWindow.addEventListener('click', popupSetupClose);
+saveUserConfig.addEventListener('keydown', saveButtonClose);
