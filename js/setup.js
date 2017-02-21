@@ -39,6 +39,7 @@ var colorHexFireball = [
   '#e6e848'];
 
 // произвольный цвет из массива
+/*
 var randomColor = function (arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 };
@@ -49,7 +50,7 @@ var colorRgbRandom = function (arr, obj, props) {
 
   obj.style[props] = randRgbColor;
 };
-
+*/
 popupWindow.addEventListener('click', function () {
   openPopupShow.classList.remove('invisible');
 });
@@ -66,7 +67,7 @@ userNameText.addEventListener('click', function () {
 saveUserConfig.addEventListener('click', function () {
   userNameText.required = true;
 });
-
+/*
 colorMantMag.addEventListener('click', function () {
   colorRgbRandom(colorRgbMantle, colorMantMag, 'fill');
 });
@@ -78,14 +79,8 @@ colorEyesMag.addEventListener('click', function () {
 colorFireballMage.addEventListener('click', function () {
   colorRgbRandom(colorHexFireball, colorFireballMage, 'backgroundColor');
 });
-
+*/
 //   Кнопки открытия/закрытия диалога настройки персонажа:
-
-// 1. Когда иконка пользователя в фокусе, то диалог настройки должен открываться по нажатию кнопки ENTER.
-// 2. Когда диалог открыт, то клавиша ESC должна закрывать диалог.
-// 3. Если диалог открыт и фокус находится на крестике, то нажатие клавиши ENTER приводит к закрытию диалога.
-// 4. Если диалог открыт, нажатие на кнопку «Сохранить» приводит к закрытию диалога.
-// 5. Если диалог открыт и фокус находится на кнопке «Сохранить», нажатие на ENTER приводит к закрытию диалога
 
 var ENTER_KEY_CODE = 13;
 var ESCAPE_KEY_CODE = 27;
@@ -135,3 +130,7 @@ closePopupWindow.addEventListener('keydown', function (evt) {
 popupWindow.addEventListener('click', popupSetupShow);
 closePopupWindow.addEventListener('click', popupSetupClose);
 saveUserConfig.addEventListener('keydown', saveButtonClose);
+
+window.colorizeElement(colorMantMag, colorRgbMantle, 'fill');
+window.colorizeElement(colorEyesMag, colorKeyEyes, 'fill');
+window.colorizeElement(colorFireballMage, colorHexFireball, 'backgroundColor');
